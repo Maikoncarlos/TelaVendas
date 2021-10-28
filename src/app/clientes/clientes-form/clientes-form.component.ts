@@ -10,11 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesFormComponent implements OnInit {
 
-  cliente: Cliente = new Cliente;
+  cliente: Cliente;
 
-  constructor() { }
+  constructor() {
+
+    this.cliente = new Cliente;
+       }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(){
+    console.log(this.cliente);
   }
 
 }

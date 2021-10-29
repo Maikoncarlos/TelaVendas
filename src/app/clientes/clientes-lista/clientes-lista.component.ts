@@ -9,7 +9,8 @@ import { Cliente } from '../cliente';
   styleUrls: ['./clientes-lista.component.css'],
 })
 export class ClientesListaComponent implements OnInit {
-  clientes: Cliente[] = [];
+  // clientes: Cliente[] = [];
+  clientes:any;
 
   constructor(
     private service: ClientesService,
@@ -18,7 +19,7 @@ export class ClientesListaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getClientes()
+    this.service.getClientes2()
     .subscribe( resposta => this.clientes = resposta );
   }
 

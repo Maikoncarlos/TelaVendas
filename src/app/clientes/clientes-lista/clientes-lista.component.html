@@ -1,6 +1,6 @@
 <h1 class="mt-4">Clientes</h1>
 <ol class="breadcrumb mb-4">
-  <li class="breadcrumb-item active">Consulta</li>
+  <li class="navbar-brand ml-2">Consulta</li>
 </ol>
 <br class="container" />
 <div class="row">
@@ -30,15 +30,47 @@
           <td>{{ cliente.cpf }}</td>
           <td>{{ cliente.dataCadastro }}</td>
           <td>
-            <button class="btn btn-primary">
-              <i class="fa fa-edit"></i>
+            <button
+              class="btn btn-primary"
+              routerLink="/clientes-form/{{ cliente.id }}"
+            >
+              <i class="fa fa-pen-square"></i> Editar
             </button>
-            <button class="btn btn-danger ml-2" (click)="novoCadastro()">
-              <i class="far fa-trash-alt"></i>
+            <button
+              class="btn btn-danger ml-2" (click)="preparandoDelecao(cliente)"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop">
+              <i class="far fa-trash-alt"></i> Deletar
             </button>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="staticBackdropLabel">Atenção</h3>
+        </div>
+        <div class="modal-body" *ngIf="clienteSelecionado"> Deseja deletar {{ clienteSelecionado.nome }} ?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success">Confimar</button>
+
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

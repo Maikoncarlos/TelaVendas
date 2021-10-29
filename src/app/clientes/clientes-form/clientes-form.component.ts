@@ -1,6 +1,6 @@
 import { ClientesService } from './../../clientes.service';
 import { Cliente } from './../cliente';
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 
 import { Component, OnInit } from '@angular/core';
 
@@ -10,26 +10,49 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clientes-form.component.css'],
 })
 export class ClientesFormComponent implements OnInit {
-  cliente: Cliente;
+  cliente: any;
   success: boolean = false;
   errors!: String[];
+  id: any;
 
   constructor(
     private service: ClientesService,
-    private router: Router
+    private router: Router,
+    private ativatedRoute: ActivatedRoute
     ) {
     this.cliente = new Cliente();
   }
 
   ngOnInit(): void {
-
-  }
+   const params = this.ativatedRoute.params
+   params.subscribe( urlParams => {
+     this.id = urlParams['id'];
+     if(this.id){
+      this.service
+      .getClienteById(this.id)
+      .subscribe(
+        resposta => this.cliente = resposta
+        )
+      }
+      })
+    }
 
   voltarParaListagem(){
     this.router.navigate(['/clientes-lista']);
   }
 
   onSubmit() {
+    if(this.id){
+      this.service.atualizar(this.cliente)
+      .subscribe(resposta => {
+        this.success = true;
+        this.errors! = [];
+      }, erros => {
+        this.errors = ['Erro ao atualizar o Cliente']
+      })
+
+    }else{
+
     this.service
     .salvar(this.cliente)
     .subscribe(
@@ -44,6 +67,7 @@ export class ClientesFormComponent implements OnInit {
       }
     );
   }
+}
 
 
 }

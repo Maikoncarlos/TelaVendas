@@ -9,22 +9,21 @@ import { Observable } from 'rxjs';
 })
 export class ClientesService {
 
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) { }
 
   salvar(cliente: Cliente) : Observable<Cliente> {
     return this.http.post<Cliente>('http://localhost:8080/api/clientes', cliente);
   }
 
-  getCliente() : Cliente{
-    let cliente : Cliente = new Cliente();
-    cliente.nome = "Maikon";
-    cliente.cpf = "0987654322"
-    return cliente;
+  getCLientes(): Cliente[]{
+    let cliente = new Cliente();
+    cliente.id = 8;
+    cliente.nome = 'Paloma Saturno';
+    cliente.cpf = '66819756070';
+    cliente.dataCadastro = '28/10/2021'
+    return [cliente];
   }
+
 }
-function getCliente() {
-  throw new Error('Function not implemented.');
-}
+
 

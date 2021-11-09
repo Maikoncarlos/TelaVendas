@@ -8,9 +8,9 @@
 <div class="row">
   <div class="col-md-12">
     <div class="alert alert-success" role="alert" *ngIf="msgSucesso">
-          {{ msgSucesso }}
+      {{ msgSucesso }}
     </div>
-    <div class="alert alert-danger" role="alert" *ngIf="msgErro" >
+    <div class="alert alert-danger" role="alert" *ngIf="msgErro">
       {{ msgErro }}
     </div>
   </div>
@@ -49,13 +49,16 @@
           <td>
             <button
               class="btn btn-primary"
-              routerLink="/clientes-form/{{ cliente.id }}" >
+              routerLink="/clientes-form/{{ cliente.id }}"
+            >
               <i class="fa fa-pen-square"></i> Editar
             </button>
             <button
-              class="btn btn-danger ml-2" (click)="preparandoDelecao(cliente)"
+              class="btn btn-danger ml-2"
+              (click)="preparandoDelecao(cliente)"
               data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop">
+              data-bs-target="#staticBackdrop"
+            >
               <i class="far fa-trash-alt"></i> Deletar
             </button>
           </td>
@@ -64,23 +67,35 @@
     </table>
   </div>
 
-
   <!-- Modal Confimação Deletar -->
   <div
-    class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-    data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-deletar" aria-hidden="true">
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="modal-deletar"
+    aria-hidden="true"
+  >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="modal-deletar">Atenção</h3>
+          <h3 class="modal-title" id="modal-deletar" background-color="red" > Atenção !!!</h3>
         </div>
         <div class="modal-body" *ngIf="clienteSelecionado">
-          <h6 class="modal-title"> Deseja deletar {{ clienteSelecionado.nome }} ?</h6>
+          <h6 class="modal-title">
+            Deseja deletar mesmo deletar cliente: <b> {{ clienteSelecionado.nome }} ? </b>
+          </h6>
         </div>
         <div class="modal-footer">
-
-          <button type="button" class="btn btn-success" (click)="deletarCliente()" data-bs-dismiss="modal">
-            Confimar</button>
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="deletarCliente()"
+            data-bs-dismiss="modal"
+          >
+            Confimar
+          </button>
 
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
             Cancelar
@@ -89,7 +104,4 @@
       </div>
     </div>
   </div>
-
-
-
 </div>

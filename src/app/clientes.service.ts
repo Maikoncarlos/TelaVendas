@@ -24,7 +24,7 @@ export class ClientesService {
         return this.http.get<Cliente[]>('http://localhost:8080/api/clientes');
   } */
 
-  getClientes2(){
+  getClientes(){
     return this.http.get('http://localhost:8080/api/clientes');
   }
 

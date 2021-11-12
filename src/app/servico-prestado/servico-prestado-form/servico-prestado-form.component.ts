@@ -16,7 +16,12 @@ export class ServicoPrestadoFormComponent implements OnInit {
   ) {  }
 
   ngOnInit(): void {
-    this.clienteService.getClientes().subscribe( response => this.clientes = response)
+    this.clienteService.getClientes().subscribe( response => this.clientes
+       = response)
+  }
+
+  onSubmit(){
+    console.log("submit");
   }
 
 }

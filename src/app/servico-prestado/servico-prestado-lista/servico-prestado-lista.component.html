@@ -3,11 +3,36 @@
   <li class="navbar-brand ml-2">Consulta</li>
 </ol>
 <div class="container">
-  <form>
+  <form #consultaForm="ngForm" (submit)="consultar()">
     <div class="row">
       <div class="col-md-6">
-        <label for="inputNome">Nome:</label>
-        <input type="text" [(ngModel)]="nome" name="nome" id="inputNome"></div>
+        <label for="inputNome">Nome Cliente:</label>
+        <input
+          type="text"
+          [(ngModel)]="nome"
+          name="nome"
+          class="form-control"
+          id="inputNome"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="inputNome"> Mês:</label>
+        <select [(ngModel)]="mes" name="mes" class="form-control">
+          <option value="">Selecione...</option>
+          <option *ngFor="let mes of meses" [ngValue]="mes">
+            {{ mes }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-search"></i> Consultar
+        </button>
+      </div>
     </div>
   </form>
 </div>

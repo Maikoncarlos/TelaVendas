@@ -8,7 +8,11 @@
       <div class="col-md-12">
         <div class="form-group">
           <label> Cliente: </label>
-          <select class="form-control">
+          <select
+            class="form-control"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="servico.idCliente"
+          >
             <option value="">Selecione...</option>
             <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
               {{ cliente.nome }}
@@ -16,6 +20,46 @@
           </select>
         </div>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Descrição:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="servico.descricao"
+            name="descricao"/>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Data:</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="servico.data"
+              name="data"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Preco:</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="servico.preco"
+              name="preco"
+            />
+          </div>
+        </div>
+        </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-success"> <i class="fa fa-save"> </i> Salvar </button></div>
     </div>
   </form>
 </div>

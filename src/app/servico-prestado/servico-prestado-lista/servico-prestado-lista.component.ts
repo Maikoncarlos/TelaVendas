@@ -5,9 +5,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './servico-prestado-lista.component.html',
   styleUrls: ['./servico-prestado-lista.component.css']
 })
-export class ServicoPrestadoListaComponent implements OnInit {
+export class ServicoPrestadoListaComponent implements OnInit{
 
-  constructor() { }
+  nome: any;
+  mes: any;
+  meses:any[];
+
+
+  constructor() {
+    this.meses = [1,2,3,4,5,6,7,8,9,10,11,12];
+  }
 
   ngOnInit(): void {
   }

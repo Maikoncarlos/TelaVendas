@@ -3,20 +3,20 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-servico-prestado-lista',
   templateUrl: './servico-prestado-lista.component.html',
-  styleUrls: ['./servico-prestado-lista.component.css']
+  styleUrls: ['./servico-prestado-lista.component.css'],
 })
-export class ServicoPrestadoListaComponent implements OnInit{
-
+export class ServicoPrestadoListaComponent implements OnInit {
   nome: any;
   mes: any;
-  meses:any[];
-
+  meses: any[];
 
   constructor() {
-    this.meses = [1,2,3,4,5,6,7,8,9,10,11,12];
+    this.meses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
+  consultar() {
+    console.log(this.nome, this.mes);
+  }
 }
